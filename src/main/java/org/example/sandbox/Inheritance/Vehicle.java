@@ -1,10 +1,31 @@
 package org.example.sandbox.Inheritance;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Conveyance {
 
-    public static int counter;
+    protected static int counter;
+    protected int loadCapacity;
 
     public Vehicle() {
         counter++;
     }
-}
+    public static int getCounter() {
+        return counter;
+    }
+
+    public int getLoadCapacity() {
+        return loadCapacity;
+    }
+
+    public void setLoadCapacity(int loadCapacity) {
+        this.loadCapacity = loadCapacity;
+    }
+
+    public abstract void load();
+
+
+    public void unload() {
+        System.out.println("Unloading vehicle with capacity: " + loadCapacity + " kg");
+    }
+    }
+
+
