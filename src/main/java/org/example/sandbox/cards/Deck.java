@@ -11,7 +11,6 @@ public interface Deck {
         int size();
 
         default int newSize() {
-            throw new UnsupportedOperationException("newSize() is not supported by this deck");
+                throw new UnsupportedOperationException();
         }
-
 }
