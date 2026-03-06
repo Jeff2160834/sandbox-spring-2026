@@ -1,40 +1,42 @@
 package org.example.sandbox.lambda;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.*;
-
-import static java.lang.System.*;
 
 public class LambdaDemo {
 
-    // x -> x * 2
 
-    // 4 classes
-    // Predicate - takes an argument and returns a boolean
-    Predicate<String> predicate = x -> x.startsWith("a");
+    public static void main(String[] args) {
 
+        // x -> x * 2
 
-    // Function - takes an argument and returns a value
-    Function<String, Integer> function = x -> x.length();
+        // 4 classes
+        // Predicate - takes 1 value return a boolean
+        Predicate<String> predicate = x -> x.startsWith("a");
 
-    // Consumer - takes an argument and returns nothing
+        // Function - take 1 value and return a value
 
+        Function<Integer, Integer> function = x -> {
+            x = x + 5;
+            return x * 2;
+        };
 
-    // Supplier - takes no arguments and returns a value
-    Supplier <String> supplier = () -> "Hello, World!";
+        // Supplier - takes nothing returns 1 value
+        Supplier<String> supplier = () -> "Hello World!";
 
-    static void main(String[] args) {
-        LambdaDemo demo = new LambdaDemo();
+        // Consumer - takes 1 value returns nothing
+        Consumer<String> consumer = x -> System.out.println(x);
 
-        out.println(demo.predicate.test("apple")); // true
-        out.println(demo.predicate.test("banana")); // false
+        // Lambdas with the Stream API
+        List<String> myList = Arrays.asList("a1", "a2", "b1", "c2", "c1");
 
-        out.println(demo.function.apply("Hello")); // 5
-        out.println(demo.function.apply("World")); // 5
-
-        out.println(demo.supplier.get()); // Hello, World!
-
+        myList.stream()
+                .sorted()
+                .filter(x -> x.startsWith("a"))
+                .map(String::toUpperCase)
+                .forEach(System.out::println);
     }
 
-    // Consumer - takes an argument and returns nothing
 
 }

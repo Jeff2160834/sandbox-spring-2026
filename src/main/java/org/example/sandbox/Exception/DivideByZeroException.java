@@ -1,7 +1,7 @@
 package org.example.sandbox.Exception;
 
 
-public class DivideByZeroException extends RuntimeException {
+public class DivideByZeroException extends Exception {
 
     public DivideByZeroException() {
     }
