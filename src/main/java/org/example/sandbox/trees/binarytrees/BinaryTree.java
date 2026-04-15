@@ -2,7 +2,6 @@ package org.example.sandbox.trees.binarytrees;
 
 import org.example.sandbox.trees.ElementNotFoundException;
 import org.example.sandbox.trees.Tree;
-import org.example.sandbox.trees.binarysearchtrees.BinarySearchTree;
 
 import java.util.*;
 
@@ -209,62 +208,92 @@ public class BinaryTree<T> implements Tree<T> {
 
         Queue<T> tempList = new LinkedList<>();
         preOrder(root, tempList);
-        // TODO implement pre order iterator
+
         return tempList.iterator();
     }
 
     private void preOrder(BinaryTreeNode<T> node, Queue<T> tempList) {
+
         // Root, Left, Right
         if (node != null) {
             tempList.add(node.element);
             preOrder(node.left, tempList);
             preOrder(node.right, tempList);
         }
+
     }
 
     @Override
     public Iterator<T> iteratorInOrder() {
+
         Queue<T> tempList = new LinkedList<>();
         inOrder(root, tempList);
-        // TODO implement in order iterator
+
         return tempList.iterator();
     }
 
     private void inOrder(BinaryTreeNode<T> node, Queue<T> tempList) {
-        // Root, Left, Right
+
+        // Left, Root, Right
         if (node != null) {
-            tempList.add(node.element);
             inOrder(node.left, tempList);
+            tempList.add(node.element);
             inOrder(node.right, tempList);
-
         }
-
-        // TODO implement in order iterator
     }
 
     @Override
     public Iterator<T> iteratorPostOrder() {
 
-        // TODO implement post order iterator
-        return null;
+        Queue<T> tempList = new LinkedList<>();
+        postOrder(root, tempList);
+
+        return tempList.iterator();
     }
 
     private void postOrder(BinaryTreeNode<T> node, Queue<T> tempList) {
-        // TODO implement post order iterator
+
+        // Left, Right, Root
+        if (node != null) {
+            postOrder(node.left, tempList);
+            postOrder(node.right, tempList);
+            tempList.add(node.element);
+        }
     }
 
     @Override
     public Iterator<T> iteratorLevelOrder() {
+
         Queue<T> tempList = new LinkedList<>();
         levelOrder(root, tempList);
-        return tempList.iterator();
-        // TODO implement level order iterator
 
+        return tempList.iterator();
     }
 
     public void levelOrder(BinaryTreeNode<T> node, Queue<T> tempList) {
 
-        // TODO implement level order iterator
+        // temporary node queue
+        Queue<BinaryTreeNode<T>> queue = new LinkedList<>();
+        queue.add(node);
+
+        // while we have nodes to iterate...
+        while (!queue.isEmpty()) {
+
+            // store node value
+            BinaryTreeNode<T> tempNode = queue.poll();
+            tempList.add(tempNode.element);
+
+            // store left node if not null
+            if (tempNode.left != null) {
+                queue.add(tempNode.left);
+            }
+
+            // store right node if not null
+            if (tempNode.right != null) {
+                queue.add(tempNode.right);
+            }
+        }
+
 
     }
 

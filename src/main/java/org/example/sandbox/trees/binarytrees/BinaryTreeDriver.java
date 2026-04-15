@@ -37,16 +37,16 @@ public class BinaryTreeDriver {
         binaryTree.insert(12);*/
 
         System.out.println("In Order traversal of binary tree will be:");
-        // printTraversal(binaryTree.iteratorInOrder());
+        printTraversal(binaryTree.iteratorInOrder());
 
         System.out.println("\nPost Order traversal of binary tree will be:");
-        // printTraversal(binaryTree.iteratorPostOrder());
+        printTraversal(binaryTree.iteratorPostOrder());
 
         System.out.println("\nPre Order traversal of binary tree will be:");
         printTraversal(binaryTree.iteratorPreOrder());
 
         System.out.println("\nLevel Order traversal of binary tree will be:");
-        // printTraversal(binaryTree.iteratorLevelOrder());
+        printTraversal(binaryTree.iteratorLevelOrder());
 
         System.out.println();
         ((BinaryTree<Integer>) binaryTree).printTopDownTree();
